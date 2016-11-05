@@ -20,12 +20,9 @@
 
 package org.javasim.examples.basic;
 
-import java.io.IOException;
-
 import org.javasim.RestartException;
 import org.javasim.SimulationException;
 import org.javasim.SimulationProcess;
-import org.javasim.streams.ExponentialStream;
 
 public class Machine extends SimulationProcess
 {
