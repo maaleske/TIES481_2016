@@ -32,7 +32,7 @@ public class Arrivals extends SimulationProcess
     public Arrivals(double interArrivalMean, double serviceTimeMean)
     {
         InterArrivalTime = new ExponentialStream(interArrivalMean);
-        ServiceTimeMean = serviceTimeMean;
+        ServiceTime = new ExponentialStream(serviceTimeMean);
     }
 
     public void run ()
@@ -42,6 +42,7 @@ public class Arrivals extends SimulationProcess
             try
             {
                 hold(InterArrivalTime.getNumber());
+                new Job(ServiceTime.getNumber());
             }
             catch (SimulationException e)
             {
@@ -53,11 +54,11 @@ public class Arrivals extends SimulationProcess
             {
             }
 
-            new Job(ServiceTimeMean);
+            
         }
     }
     
     private ExponentialStream InterArrivalTime;
 
-    private double ServiceTimeMean;
+    private ExponentialStream ServiceTime;
 }

@@ -28,11 +28,11 @@ import org.javasim.streams.ExponentialStream;
 
 public class Job
 {
-    public Job(double mean)
+    public Job(double stime)
     {
         boolean empty = false;
 
-        STime = new ExponentialStream(mean);
+        ServiceTime = stime;
         
         ResponseTime = 0.0;
         ArrivalTime = Scheduler.currentTime();
@@ -65,17 +65,11 @@ public class Job
     
     public double serviceTime ()
     {
-        try
-        {
-            return STime.getNumber();
-        }
-        catch (IOException e)
-        {
-            return 0.0;
-        }
+        return ServiceTime;
+
     }
 
-    private ExponentialStream STime;
+    private double ServiceTime;
 
     private double ResponseTime;
 

@@ -25,13 +25,13 @@ import org.javasim.Scheduler;
 import org.javasim.Simulation;
 import org.javasim.SimulationException;
 import org.javasim.SimulationProcess;
+import org.javasim.streams.ExponentialStream;
 
 public class MachineShop extends SimulationProcess
 {
     public MachineShop(boolean isBreaks)
     {
         useBreaks = isBreaks;
-
         TotalResponseTime = 0.0;
         TotalJobs = 0;
         ProcessedJobs = 0;
@@ -48,6 +48,7 @@ public class MachineShop extends SimulationProcess
             Breaks B = null;
             Arrivals A = new Arrivals(8, 8);
             MachineShop.M = new Machine();
+            
             Job J = new Job(8);
 
             A.activate();
@@ -106,6 +107,8 @@ public class MachineShop extends SimulationProcess
 
     public static Queue JobQ = new Queue();
 
+    public static ExponentialStream ServiceTimes = null;
+    
     public static double TotalResponseTime = 0.0;
 
     public static long TotalJobs = 0;
