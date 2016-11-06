@@ -37,8 +37,20 @@ public class MachineShop extends SimulationProcess
         ProcessedJobs = 0;
         JobsInQueue = 0;
         CheckFreq = 0;
-        MachineActiveTime = 0.0;
-        MachineFailedTime = 0.0;
+        double[] machineActiveTime = {0.0 , 0.0 , 0.0};
+        MachineActiveTime = machineActiveTime;
+        double[] machineFailedTime = {0.0 , 0.0 , 0.0};
+        MachineFailedTime = machineFailedTime;
+        M1Count = 3;
+        M2Count = 1;
+        M3Count = 3;
+        M1 = new Machine[M1Count];
+        M2 = new Machine[M2Count];
+        M3 = new Machine[M3Count];
+        JobQ = new Queue[3];
+        IdleQ = new ProcessQueue[3];
+        for (int i=0; i < 3; i++) JobQ[i] = new Queue();
+        for (int i=0; i < 3; i++) IdleQ[i] = new ProcessQueue();
     }
 
     public void run ()
@@ -46,14 +58,25 @@ public class MachineShop extends SimulationProcess
         try
         {
             Breaks B = null;
-            Arrivals A = new Arrivals(8, 8);
-            MachineShop.M = new Machine();
-            Monitor Mon = new Monitor(1, 1, 1);
-            
-            Job J = new Job(8);
-            
-            Mon.activate();
+            Arrivals A = new Arrivals(25, 40, 20, 40);
+            for (int i=0;i < M1Count; i++)
+            {
+            	MachineShop.M1[i] = new Machine(1);
+            }
+            for (int i=0;i < M2Count; i++)
+            {
+            	MachineShop.M2[i] = new Machine(2);
+            }
+            for (int i=0;i < M3Count; i++)
+            {
+            	MachineShop.M3[i] = new Machine(3);
+            }
+            Monitor Mon = new Monitor(1, M1Count, 1);
+            double[] times = {5, 5, 5};
+            Job J = new Job(times);
+
             A.activate();
+            Mon.activate();
 
             if (useBreaks)
             {
@@ -63,7 +86,7 @@ public class MachineShop extends SimulationProcess
 
             Simulation.start();
 
-            while (MachineShop.ProcessedJobs < 1000)
+            while (MachineShop.ProcessedJobs < 10000)
                 hold(1000);
 
             System.out.println("Current time "+currentTime());
@@ -74,17 +97,41 @@ public class MachineShop extends SimulationProcess
             System.out.println("Average response time = "
                     + (TotalResponseTime / ProcessedJobs));
             System.out
-                    .println("Probability that machine is working = "
-                            + ((MachineActiveTime - MachineFailedTime) / currentTime()));
-            System.out.println("Probability that machine has failed = "
-                    + (MachineFailedTime / MachineActiveTime));
+                    .println("Probability that one of the machine 1 is working = "
+                            + ((MachineActiveTime[0] - MachineFailedTime[0]) /(3 * currentTime())));
+            //System.out.println("Probability that machine 1 has failed = "
+            //        + (MachineFailedTime[0] / MachineActiveTime[0]));
+            System.out
+                    .println("Probability that one of the machine 2 is working = "
+                            + ((MachineActiveTime[1] - MachineFailedTime[1]) /(3 * currentTime())));
+            //System.out.println("Probability that machine 2 has failed = "
+            //        + (MachineFailedTime[1] / MachineActiveTime[1]));
+            System.out
+                    .println("Probability that one of the machine 3 is working = "
+                            + ((MachineActiveTime[2] - MachineFailedTime[2]) /(3 * currentTime())));
+            //System.out.println("Probability that machine 3 has failed = "
+            //        + (MachineFailedTime[2] / MachineActiveTime[2]));
             System.out.println("Average number of jobs present = "
                     + (JobsInQueue / CheckFreq));
 
             Simulation.stop();
 
             A.terminate();
-            MachineShop.M.terminate();
+            
+            for (int i=0;i < M1Count; i++)
+            {
+            	MachineShop.M1[i].terminate();
+            }
+            
+            for (int i=0;i < M2Count; i++)
+            {
+            	MachineShop.M2[i].terminate();
+            }
+            
+            for (int i=0;i < M3Count; i++)
+            {
+            	MachineShop.M3[i].terminate();
+            }
 
             Mon.report();
             Mon.terminate();
@@ -108,9 +155,21 @@ public class MachineShop extends SimulationProcess
         SimulationProcess.mainSuspend();
     }
 
-    public static Machine M = null;
+    public static Machine[] M1 = null;
+    
+    public static int M1Count;
 
-    public static Queue JobQ = new Queue();
+    public static Machine[] M2 = null;
+    
+    public static int M2Count;
+
+    public static Machine[] M3 = null;
+    
+    public static int M3Count;
+    
+    public static ProcessQueue[] IdleQ = null;
+
+    public static Queue[] JobQ = null;
 
     public static ExponentialStream ServiceTimes = null;
     
@@ -124,9 +183,9 @@ public class MachineShop extends SimulationProcess
 
     public static long CheckFreq = 0;
 
-    public static double MachineActiveTime = 0.0;
+    public static double[] MachineActiveTime = null;
 
-    public static double MachineFailedTime = 0.0;
+    public static double[] MachineFailedTime = null;
 
     private boolean useBreaks;
 }
