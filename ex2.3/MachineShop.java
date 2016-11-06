@@ -42,7 +42,7 @@ public class MachineShop extends SimulationProcess
         double[] machineFailedTime = {0.0 , 0.0 , 0.0};
         MachineFailedTime = machineFailedTime;
         M1Count = 3;
-        M2Count = 3;
+        M2Count = 1;
         M3Count = 3;
         M1 = new Machine[M1Count];
         M2 = new Machine[M2Count];
@@ -58,7 +58,7 @@ public class MachineShop extends SimulationProcess
         try
         {
             Breaks B = null;
-            Arrivals A = new Arrivals(5, 20);
+            Arrivals A = new Arrivals(25, 40, 20, 40);
             for (int i=0;i < M1Count; i++)
             {
             	MachineShop.M1[i] = new Machine(1);

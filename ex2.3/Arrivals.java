@@ -29,10 +29,12 @@ import org.javasim.streams.ExponentialStream;
 
 public class Arrivals extends SimulationProcess
 {
-    public Arrivals(double interArrivalMean, double serviceTimeMean)
+    public Arrivals(double interArrivalMean, double s1TimeMean, double s2TimeMean, double s3TimeMean)
     {
         InterArrivalTime = new ExponentialStream(interArrivalMean);
-        ServiceTime = new ExponentialStream(serviceTimeMean);
+        Service1Time = new ExponentialStream(s1TimeMean);
+        Service2Time = new ExponentialStream(s2TimeMean);
+        Service3Time = new ExponentialStream(s3TimeMean);
     }
 
     public void run ()
@@ -42,7 +44,7 @@ public class Arrivals extends SimulationProcess
             try
             {
                 hold(InterArrivalTime.getNumber());
-                double[] sTimes = {ServiceTime.getNumber(), ServiceTime.getNumber(), ServiceTime.getNumber()};
+                double[] sTimes = {Service1Time.getNumber(), Service2Time.getNumber(), Service3Time.getNumber()};
                 new Job(sTimes);
             }
             catch (SimulationException e)
@@ -61,5 +63,9 @@ public class Arrivals extends SimulationProcess
     
     private ExponentialStream InterArrivalTime;
 
-    private ExponentialStream ServiceTime;
+    private ExponentialStream Service1Time;
+    
+    private ExponentialStream Service2Time;
+    
+    private ExponentialStream Service3Time;
 }
