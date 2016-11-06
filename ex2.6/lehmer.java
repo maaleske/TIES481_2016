@@ -133,7 +133,7 @@ public class LehmerGen {
 	}
 	
 	/**
-	 * 
+	 * Here we print random vectors calculated by original and shuffled Lehmer generator
 	 * @param args = not in use
 	 */
 	public static void main(String[] args){
@@ -144,23 +144,25 @@ public class LehmerGen {
 		int size = 50;
 		double x = 94;
 		double[] lehmervec = giverandomvec(a,x,c,m,size);
+		System.out.println("=== Original Lehmer =========================");
 		for(int i=0; i<size; i++){
-			//System.out.println(lehmervec[i]/m);
+			System.out.println(lehmervec[i]/m);
 		}
 		
 		System.out.println("=========================");
 		
-		double[] lehmervectorpart = vectorpart(lehmervec, 0.0, 0.01);
+		double[] lehmervectorpart = vectorpart(lehmervec, 0.0, 0.1);
 		
 		for(int i=0; i<lehmervectorpart.length; i++){
 			System.out.println(lehmervectorpart[i]);
 		}
 		
-		
-		System.out.println("=========================");
-		
 		//doesn't give anything => original Lehmer doesn't actually gives numbers
-		// from [0,0.01] which is bad => not uniform
+		// from [0,0.1] which is bad => not uniform
+		
+		System.out.println("=== Shuffled Lehmer =========================");
+		
+
 		
 		double[] lehmershuffled = giveshuffledvec(a,x,c,m,size);
 		
@@ -174,10 +176,12 @@ public class LehmerGen {
 		
 		System.out.println("=========================");
 		
-        double[] lehmershuffledpart = vectorpart(lehmershuffled, 0.0, 0.01);
+        double[] lehmershuffledpart = vectorpart(lehmershuffled, 0.0, 0.1);
 		
 		for(int i=0; i<lehmershuffledpart.length; i++){
 			System.out.println(lehmershuffledpart[i]);
 		}
+		// gives better result than the original one 
 	}
 }
+
