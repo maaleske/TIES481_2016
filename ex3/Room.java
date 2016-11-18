@@ -87,7 +87,15 @@ public class Room extends SimulationProcess {
                     while (!Clinic.PatientQ[roomType - 1].isEmpty()) {
                         
                         if(!Clinic.WaitingQ[roomType - 2].IsEmpty()){
-                            Clinic.IdleQ[roomType - 2].Enqueue(Clinic.WaitingQ[roomType - 2].Dequeue());
+                            if(!Clinic.PatientQ[roomType - 2].isEmpty()){
+                            	try {
+									Clinic.WaitingQ[roomType - 2].Dequeue().activate();
+                            	} catch (SimulationException e) {
+                                } catch (RestartException e) {
+                                }
+                            } else {
+                            	Clinic.IdleQ[roomType - 2].Enqueue(Clinic.WaitingQ[roomType - 2].Dequeue());
+                        	}
                         }
                         
                         ActiveStart = currentTime();
@@ -135,8 +143,16 @@ public class Room extends SimulationProcess {
                 case 3:
                     while (!Clinic.PatientQ[roomType - 1].isEmpty()) {
                         
-                        if(!Clinic.WaitingQ[roomType - 2].IsEmpty()){
-                            Clinic.IdleQ[roomType - 2].Enqueue(Clinic.WaitingQ[roomType - 2].Dequeue());
+                    	if(!Clinic.WaitingQ[roomType - 2].IsEmpty()){
+                            if(!Clinic.PatientQ[roomType - 2].isEmpty()){
+                            	try {
+									Clinic.WaitingQ[roomType - 2].Dequeue().activate();
+                            	} catch (SimulationException e) {
+                                } catch (RestartException e) {
+                                }
+                            } else {
+                            	Clinic.IdleQ[roomType - 2].Enqueue(Clinic.WaitingQ[roomType - 2].Dequeue());
+                        	}
                         }
                         
                         ActiveStart = currentTime();

@@ -78,7 +78,7 @@ public class Clinic extends SimulationProcess
             {
             	Clinic.Reco[i] = new Room(3);
             }
-            Monitor Mon = new Monitor(1, PreparationRooms, 1);
+            Monitor Mon = new Monitor(1, PreparationRooms, 3);
             
             //double[] times = {5, 5, 5};
             //Patient J = new Patient(times);
