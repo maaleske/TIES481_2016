@@ -49,8 +49,10 @@ public class Clinic extends SimulationProcess
         Reco = new Room[RecoveryRooms];
         PatientQ = new Queue[3];
         IdleQ = new ProcessQueue[3];
+        WaitingQ = new ProcessQueue[2];
         for (int i=0; i < 3; i++) PatientQ[i] = new Queue();
         for (int i=0; i < 3; i++) IdleQ[i] = new ProcessQueue();
+        for (int i=0; i < 2; i++) WaitingQ[i] = new ProcessQueue();
     }
 
     public void run ()
@@ -186,6 +188,8 @@ public class Clinic extends SimulationProcess
     public static int RecoveryRooms;
     
     public static ProcessQueue[] IdleQ = null;
+    
+    public static ProcessQueue[] WaitingQ = null;
 
     public static Queue[] PatientQ = null;
 

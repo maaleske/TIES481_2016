@@ -69,7 +69,14 @@ public class Room extends SimulationProcess {
                                 } catch (RestartException e) {
                                 }
                             }
+                            else {
+                                Clinic.WaitingQ[roomType -1].Enqueue(this);
+                            }
                         }
+                        else {
+                            Clinic.WaitingQ[roomType -1].Enqueue(this);
+                        }
+                        
 
                     }
 
@@ -78,12 +85,19 @@ public class Room extends SimulationProcess {
 
                 case 2:
                     while (!Clinic.PatientQ[roomType - 1].isEmpty()) {
+                        
+                        if(!Clinic.WaitingQ[roomType - 2].IsEmpty()){
+                            Clinic.IdleQ[roomType - 2].Enqueue(Clinic.WaitingQ[roomType - 2].Dequeue());
+                        }
+                        
                         ActiveStart = currentTime();
                         Clinic.CheckFreq++;
 
                         Clinic.PatientsInQueue += Clinic.PatientQ[roomType - 1].queueSize();
                         J = Clinic.PatientQ[roomType - 1].dequeue();
-
+                        
+                        
+                        
                         try {
                             hold(J.ServiceTime[roomType - 1]);
                         } catch (SimulationException e) {
@@ -105,6 +119,12 @@ public class Room extends SimulationProcess {
                                 } catch (RestartException e) {
                                 }
                             }
+                            else {
+                                Clinic.WaitingQ[roomType -1].Enqueue(this);
+                            }
+                        }
+                        else {
+                            Clinic.WaitingQ[roomType -1].Enqueue(this);
                         }
 
                     }
@@ -114,6 +134,11 @@ public class Room extends SimulationProcess {
 
                 case 3:
                     while (!Clinic.PatientQ[roomType - 1].isEmpty()) {
+                        
+                        if(!Clinic.WaitingQ[roomType - 2].IsEmpty()){
+                            Clinic.IdleQ[roomType - 2].Enqueue(Clinic.WaitingQ[roomType - 2].Dequeue());
+                        }
+                        
                         ActiveStart = currentTime();
                         Clinic.CheckFreq++;
 
