@@ -16,7 +16,15 @@ public void run ()
 	{
 	    working = true;
 	    while (!Clinic.RecQ.isEmpty()){
-	    	J = Clinic.RecQ.remove();		
+	    	J = Clinic.RecQ.remove();
+	    try {
+	    	if (!Clinic.M.IsOperational()) {
+	    		Clinic.M.Release();
+	    		Clinic.M.activate();
+	    	}
+	    }
+		catch (SimulationException e){}
+	    catch (RestartException e){}		
 	    	try {
 	    		hold(J.RecoveryTime());
 	    	}
@@ -27,13 +35,8 @@ public void run ()
 	    working = false;
 	    Clinic.IRQ.add(this);
 	    try {
-	    	if (!Clinic.M.IsOperational()) {
-	    		Clinic.M.Release();
-	    		Clinic.M.activate();
-	    	}
 	    	passivate();
 	    }
-		catch (SimulationException e){}
 	    catch (RestartException e){}
 	}
     }
