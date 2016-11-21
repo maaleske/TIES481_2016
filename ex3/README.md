@@ -1,5 +1,4 @@
 Exercise 3: Running and analyzing experiments
-Note: "tables" don't show properly
 
 So, like it was told, we run the simulation by using the following means:
   Interarrival time: 25
@@ -49,15 +48,17 @@ TODO: kirjoita mikä oli kriteerinä - miten valittiin osa mikä pätkäistiin p
    have calculated differences for each simulation samples and finally calculated
    averages, standard deviations and confidence intervals.
 
-   AVERAGES:                                            3p,4r           3p,5r          4p,5r 
-   Length of the queue before the preparation room:     -1.38           -0.92          0.04
-   Length of the idle queue for prep. rooms:            0.17            0.13           0.11
-   Probability of operation being in waiting state:     -0.01           0.00           0.00
+   AVERAGES:                                         |  3p,4r        |  3p,5r       |  4p,5r 
+    ------------------------------------------------ | -------------:| ------------:| ------:
+   Length of the queue before the preparation room:  |  -1.38        |  -0.92       |  0.04
+   Length of the idle queue for prep. rooms:         |  0.17         |  0.13        |  0.11
+   Probability of operation being in waiting state:  |  -0.01        |  0.00        |  0.00
    
-   CONFIDENCE INTERVALS:                                3p,4r           3p,5r          4p,5r 
-   Length of the queue before the preparation room:     [-4.58,1.82]    [-3.88,2.04]   [-1.70,1.79]
-   Length of the idle queue for prep. rooms:            [-0.10,0.44]    [-0.16,0.42]   [-0.35,0.57]
-   Probability of operation being in waiting state:     [-0.03,0.01]    [-0.01,0.01]   [-0.01,0.02]
+   CONFIDENCE INTERVALS:                             |  3p,4r        |  3p,5r       |  4p,5r 
+    ------------------------------------------------ | -------------:| ------------:| ------:
+   Length of the queue before the preparation room:  |  [-4.58,1.82] |  [-3.88,2.04]|  [-1.70,1.79]
+   Length of the idle queue for prep. rooms:         |  [-0.10,0.44] |  [-0.16,0.42]|  [-0.35,0.57]
+   Probability of operation being in waiting state:  |  [-0.03,0.01] |  [-0.01,0.01]|  [-0.01,0.02]
 
    The differences between configurations are significant, if confidence intervals do not overlap
    well. Now results for are more similar than previously. The configuration (4p,5r) has shorter
@@ -72,13 +73,15 @@ TODO: kirjoita mikä oli kriteerinä - miten valittiin osa mikä pätkäistiin p
 4. Now we consider the probability of all recovery rooms being busy. We get the following results:
    
 
-   AVERAGES:                                            3p,4r           3p,5r          4p,5r 
-   Probability of being busy  (1st run)                 0.07            0.02           0.02
-   Probability of being busy  (2nd run)                 0.08            0.03           0.03
+   AVERAGES:                                         |  3p,4r        |  3p,5r       |  4p,5r 
+    ------------------------------------------------ | -------------:| ------------:| ------:
+   Probability of being busy  (1st run)              |  0.07         |  0.02        |  0.02
+   Probability of being busy  (2nd run)              |  0.08         |  0.03        |  0.03
    
-   CONFIDENCE INTERVALS:                                3p,4r           3p,5r          4p,5r 
-   Probability of being busy  (1st run)                 [0.04,0.10]     [0.00, 0.04]   [0.00, 0.03]
-   Probability of being busy  (2nd run)                 [0.05,0.11]     [0.01, 0.04]   [0.02, 0.04]
+   CONFIDENCE INTERVALS:                             |  3p,4r        |  3p,5r       |  4p,5r 
+    ------------------------------------------------ | -------------:| ------------:| ------:
+   Probability of being busy  (1st run)              |  [0.04,0.10]  |  [0.00, 0.04]|  [0.00, 0.03]
+   Probability of being busy  (2nd run)              |  [0.05,0.11]  |  [0.01, 0.04]|  [0.02, 0.04]
 
    As we can see, the probabilities change a little - or actually they are now about three times 
    greater in the cases of (3p,5r) and (4p,5r). Also confidence intervals are larger. The larger
