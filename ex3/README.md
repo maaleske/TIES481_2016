@@ -41,3 +41,46 @@ TODO: kirjoita mikä oli kriteerinä - miten valittiin osa mikä pätkäistiin p
    In the third case, the result of (3p,4r) is different from the two others. So, the probability 
    of being in waiting state is higher when only 4 recovery rooms are available. When there are 5 
    available, it is no probable to have operation in a waiting state.
+   
+3. Now we consider simulation results pairwise. All the calculations can be found in
+   the file "ties_laskuja_PROSENTEILLA.ods". We used the same random seed for each
+   configuration. We have studied results pairwise in such a way that in particular 
+   we study differences between the same configurations (but different runs). We
+   have calculated differences for each simulation samples and finally calculated
+   averages, standard deviations and confidence intervals.
+
+   AVERAGES:                                            3p,4r           3p,5r          4p,5r 
+   Length of the queue before the preparation room:     -1.38           -0.92          0.04
+   Length of the idle queue for prep. rooms:            0.17            0.13           0.11
+   Probability of operation being in waiting state:     -0.01           0.00           0.00
+   
+   CONFIDENCE INTERVALS:                                3p,4r           3p,5r          4p,5r 
+   Length of the queue before the preparation room:     [-4.58,1.82]    [-3.88,2.04]   [-1.70,1.79]
+   Length of the idle queue for prep. rooms:            [-0.10,0.44]    [-0.16,0.42]   [-0.35,0.57]
+   Probability of operation being in waiting state:     [-0.03,0.01]    [-0.01,0.01]   [-0.01,0.02]
+
+   The differences between configurations are significant, if confidence intervals do not overlap
+   well. Now results for are more similar than previously. The configuration (4p,5r) has shorter
+   CI for the length of the queue before the preparation room and longer for the length of the idle
+   queue for preparaion rooms, but intervals are overlapping pretty well. 
+
+   On the other hand, averages of differences should be really close to zero. Then there would not 
+   be much difference between different simulations. The results for the length of the queue before
+   the preparation room are more far away from zero, but otherwise they are pretty close to zero.
+
+
+4. Now we consider the probability of all recovery rooms being busy. We get the following results:
+   
+
+   AVERAGES:                                            3p,4r           3p,5r          4p,5r 
+   Probability of being busy  (1st run)                 0.07            0.02           0.02
+   Probability of being busy  (2nd run)                 0.08            0.03           0.03
+   
+   CONFIDENCE INTERVALS:                                3p,4r           3p,5r          4p,5r 
+   Probability of being busy  (1st run)                 [0.04,0.10]     [0.00, 0.04]   [0.00, 0.03]
+   Probability of being busy  (2nd run)                 [0.05,0.11]     [0.01, 0.04]   [0.02, 0.04]
+
+   As we can see, the probabilities change a little - or actually they are now about three times 
+   greater in the cases of (3p,5r) and (4p,5r). Also confidence intervals are larger. The larger
+   probabilies are more reasonable, since the measurement of being busy is more accurate than
+   measuring the probability of being waiting.
