@@ -42,7 +42,7 @@ public void report()
 //	System.out.println("Entry queue "+ entryqueue );
 //	System.out.println(("Idlequeue "+ idlewaitqueue ));
 //	System.out.println("Blockings "+ blockfrq );
-	System.out. println(checkcount+" "+entryqueue+" "+idlewaitqueue+" "+blockfrq+" "+recovery_busy_count+" "+operfrq);
+	System.out. println(entryqueue+" "+idlewaitqueue+" "+blockfrq+" "+recovery_busy_count+" "+operfrq);
 }
 
 public void reset()

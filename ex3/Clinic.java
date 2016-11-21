@@ -14,7 +14,7 @@ public Clinic ()
 			IWQ.add(PRooms[i]);
 		}
 	
-	for(int i=0;i<5;i++)
+	for(int i=0;i<4;i++)
 		{
 			RRooms[i]= new RecoveryRoom();
 			IRQ.add(RRooms[i]);
@@ -26,10 +26,11 @@ public void run ()
     {
 	try
 	{
-		ExponentialStream inter = new ExponentialStream(25);
-		ExponentialStream pre  = new ExponentialStream(40,10);
-		ExponentialStream op = new ExponentialStream(20,20);
-		ExponentialStream rec = new ExponentialStream(40,30);
+		ExponentialStream inter = new ExponentialStream(25,0,123256487,984653);
+                ExponentialStream pre  = new ExponentialStream(40,10,5454315,42);
+                ExponentialStream op = new ExponentialStream(20,20,687132135,545678231);
+                ExponentialStream rec = new ExponentialStream(40,30,672315489,3877953);
+
 		Arrivals A = new Arrivals(inter, pre, op, rec);
 	    Clinic.M = new OperationRoom();
 	    
