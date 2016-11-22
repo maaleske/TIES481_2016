@@ -10,7 +10,6 @@ patients in preparation and recovery. We run the simulation (20 independent samp
 1000 time units) and see what happens. The simulation data can be found in the .ods files
 in this directory. We run the samples in such a way that we made one long simulation and
 we cut a beginning (which is the initial transient).
-TODO: kirjoita mikä oli kriteerinä - miten valittiin osa mikä pätkäistiin pois
 
 1. 3 preparation rooms, 4 recovery rooms (3p,4r)
     
@@ -43,9 +42,10 @@ TODO: kirjoita mikä oli kriteerinä - miten valittiin osa mikä pätkäistiin p
    
 3. Now we consider simulation results pairwise. All the calculations can be found in
    the file "ties_laskuja_PROSENTEILLA.ods". We used the same random seed for each
-   configuration. We have studied results pairwise in such a way that in particular 
-   we study differences between the same configurations (but different runs). We
-   have calculated differences for each simulation samples and finally calculated
+   configuration but the seed is different in different runs. We have studied results 
+   pairwise in such a way that in particular we study differences between the same 
+   configurations (but different runs). 
+   We have calculated differences for each simulation samples and finally calculated
    averages, standard deviations and confidence intervals.
 
    AVERAGES:                                         |  3p,4r        |  3p,5r       |  4p,5r 
