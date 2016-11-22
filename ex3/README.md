@@ -7,11 +7,6 @@ We run the simulation using the following mean times for the patients:
  - Operation time:    20
  - Recovery time:     40
 
-So, like it was told, we run the simulation by using the following means:
-  Interarrival time: 25
-  Preparation time:  40
-  Operation time:    20
-  Recovery time:     40.
 Ideally, we should have 80% utilization of operation room and on average less than two 
 patients in preparation and recovery. 
 
