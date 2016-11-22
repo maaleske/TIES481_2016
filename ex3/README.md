@@ -1,17 +1,21 @@
-Exercise 3: Running and analyzing experiments
+# Exercise 3: Running and analyzing experiments
 
-So, like it was told, we run the simulation by using the following means:
-  Interarrival time: 25
-  Preparation time:  40
-  Operation time:    20
-  Recovery time:     40.
+We run the simulation using the following mean times for the patients:
+
+ - Interarrival time: 25
+ - Preparation time:  40
+ - Operation time:    20
+ - Recovery time:     40
+
 Ideally we should have 80% utilization of operation room and on average less than two 
-patients in preparation and recovery. We run the simulation (20 independent samples of
-1000 time units) and see what happens. The simulation data can be found in the .ods files
-in this directory. We run the samples in such a way that we made one long simulation and
-we cut a beginning (which is the initial transient).
+patients in preparation and recovery. 
 
-1. 3 preparation rooms, 4 recovery rooms (3p,4r)
+For each configuration, we ran the simulation for 1000 time units to let it reach a stable state,
+and then monitored 20 samples of 1000 time units with another 1000 time units between them. The 
+simulation data can be found in the .ods files in this directory. Averages and confidence intervals
+were then calculated using each of the 20 samples as independent measurements for the configuration.
+
+1. Results for the different configurations of preparation and recovery rooms (with one operating room)
     
    AVERAGES:                                         |  3p,4r        |  3p,5r       |  4p,5r
     ------------------------------------------------ | -------------:| ------------:| ------:
