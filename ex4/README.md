@@ -1,6 +1,6 @@
 #Ex4
 
-1. We have the following factors (6) which have two values:
+1.  We have the following factors (6) which have two values:
     - interarrival time distribution (unif/exp)    x1
     - interarrival time mean (22.5/25)             x2
     - preparation time distribution (unif/exp)     x3
@@ -13,9 +13,17 @@
     1st order terms to each order (which would have happened if we choose x1x2x3x4x5x6=1 and continue
     from that).
     
-2. Now we take one experiment from the previous design:we choose the combination with the least rooms 
+2.  Now we take one experiment from the previous design:we choose the combination with the least rooms 
     and the shortest interarrival times. 
     
     ADD TABLE
     
+    We tested different values for sample length and interval. We saw, that for example the values
     
+    report_rate = 10
+    sample length = 1000
+    interval = 3000
+    
+    
+    
+3.  We decided 
