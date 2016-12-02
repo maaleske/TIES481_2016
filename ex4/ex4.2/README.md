@@ -1,6 +1,6 @@
 # Ex 4.2
 
-Using the design from ex. 4.1, We ran a simulation for 1e6 time units and gathered the length of the entry queue at each time step of the simulation. We then used MATLAB (see [the code](analysis.m)) to calculate sample autocorrelation and to test different sampling parameters.
+Using the 6th design from ex. 4.1 (exponential interarrival time distribution with a mean of 22.5 units, exponential preparation and recovery time distributions, 4 preparation and recovery units), We ran a simulation for 1e6 time units and gathered the length of the entry queue at each time step of the simulation. We then used MATLAB (see [the code](analysis.m)) to calculate sample autocorrelation and to test different sampling parameters.
 
 ### Full time series
 
