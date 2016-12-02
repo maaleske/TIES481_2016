@@ -1,12 +1,12 @@
 #Ex4
 
 1.  We have the following factors (6) which have two values:
-    - (x1) interarrival time distribution (unif =-1 / exp =+1)
-    - (x2) interarrival time mean (22.5 =-1 / 25 =+1)
-    - (x3) preparation time distribution (unif =-1 / exp =+1)
-    - (x4) recovery time distribution (unif =-1 / exp =+1)
-    - (x5) number of preparation units (4 =-1 / 5 =+1)
-    - (x6) number of recovery units (4 =-1 / 5 =+1)
+    - (x1) interarrival time distribution (unif :=-1 / exp :=+1)
+    - (x2) interarrival time mean (22.5 :=-1 / 25 :=+1)
+    - (x3) preparation time distribution (unif :=-1 / exp :=+1)
+    - (x4) recovery time distribution (unif :=-1 / exp :=+1)
+    - (x5) number of preparation units (4 :=-1 / 5 :=+1)
+    - (x6) number of recovery units (4 :=-1 / 5 :=+1)
 
     Let us denote these factors by x's. Now, there would be 64 different combinations to test and we want to construct a design of 8 experiments (2^(6-3)). We choose to take those combinations for which x1x3x4=x1x5x6=x2x4x6=1 (if possible values are 1 and -1). This way, we didn't alias 1st order terms to each order (which could have happened if we had chosen x1x2x3x4x5x6=1, etc.)
  
@@ -26,4 +26,4 @@
 2.  We chose the 6th experiment, as we hypothesised it to be the worst-case scenario (it is the one with the lowest interarrival times and longest preparation/recovery times) of our 8 tests to run a single simulation, and used MATLAB to analyze the series correlation properties. See [the full analysis.](./ex4.2/) 
 
     
-3.  We decided 
+3.  Based on the analysis in exercise 2 we chose to run experiments with data gathering rate of 10 time units, sample length of 1000 time units and sampling interval of 3000 time units to ensure independency of the samples. In each experiment we first let the system stabilize for 100 000 time units, and then collected 100 independent samples. See [the results.](./ex4.3/) 
