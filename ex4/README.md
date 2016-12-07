@@ -27,3 +27,5 @@
 
     
 3.  Based on the analysis in exercise 2 we chose to run experiments with data gathering rate of 10 time units, sample length of 1000 time units and sampling interval of 3000 time units to ensure independency of the samples. In each experiment we first let the system stabilize for 100 000 time units, and then collected 100 independent samples. From these samples we observed the average length of the patient queue, average blocking of the operation room, and the average operation room utilization rate. See [the results.](./ex4.3/) 
+
+4. See [ex4.4.] (./ex4.4/)
